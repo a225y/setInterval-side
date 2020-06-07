@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>setInterval-side</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: 'Lora', serif;
+        }
+        section{
+            width: 100vw;
+            height: 100vh;
+        }
+        .main{
+            background-image: url(bg.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+    
+        }
+        .main__menu{
+            width: 100%;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.466)
+            
+        }
+        .main__menu ul{
+            display: flex;
+            
+        }
+        .main__menu ul li{
+            
+            line-height: 60px;
+            font-size: 28px;
+            margin: auto;
+        }
+        .main__menu ul li a{
+            color: aliceblue;
+            text-decoration-line: none;
+            transition: all ease 0.5s;
+        }
+        ul li:hover a{
+            color: #0012aa;
+        }
+        .main img{
+            width: 250px;
+            margin: auto;
+            margin-top: 100px; 
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        .main__title{
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+        }
+        .title-text p{
+            font-size: 56px;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            padding: 5px 15px;
+            background-color:#0012aa;
+            margin: 10px 0;
+        }
+        .main__title span{
+            font-size: 28px;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            padding: 5px 15px;
+            background-color:#dd1e19;
+            margin-left: 100px;
+        }
+        .info{
+           cursor: pointer;
+            position: absolute;
+            top: 200px;
+            left: -80px;
+        }
+       .info__bar{
+           width: 32px;
+           background-color: goldenrod;
+           position: absolute;
+           left: 80px;
+       }
+       .info__bar i{
+           font-size: 36px;
+           color: #dd1e19;
+           padding-top: 10px;
+           
+       }
+       .info__bar p{
+           writing-mode: vertical-lr;
+           text-orientation: upright;
+           color: #FFF;
+           font-weight: bold;
+           margin-left: 5px;
+           padding-bottom: 10px;
+       }
+       .info__box{
+           width: 80px;
+           height: 240px;
+           background-color:#0012aa;
+           display: flex;
+           flex-direction: column;
+           text-align: center;
+       }
+       .info__box i{
+           margin-top: 20px;
+       }
+       
+       .info__box{
+           font-size: 36px;
+           color: #FFF;
+       }
+
+
+
+    </style>
+</head>
+<body>
+    <section class="main">
+        <nav class="main__menu">
+            <ul>
+                <li><a href="#">Plan a journey</a></li>
+                <li><a href="#">Status updates</a></li>
+                <li><a href="#">Maps</a></li>
+                <li><a href="#">Fares</a></li>
+                <li><a href="#">Help & contacts</a></li>
+            </ul>
+        </nav>
+        <div class="main__img">
+            <img src="title.png" alt="">
+        </div>
+        <div class="main__title">
+            <div class="title-text">
+                <p>Lodon Underground </p>
+                <span>Best time to visit London</span>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="info__bar">
+                <i class="fa fa-info-circle"></i>
+                <p>INFO </p>
+            </div>
+            <div class="info__box">
+                <i class="fa fa-calendar"></i>
+                <i class="fa fa-subway"></i>
+                <i class="fa fa-comments-o"></i>
+                <i class="fa fa-cc-visa"></i>
+            </div>
+        </div>
+
+    </section>
+
+<script>
+    window.onload = function(){
+        let oInfo = document.querySelector('.info');
+        let timer = null;
+
+        //滑鼠移入
+        oInfo.onmouseover = function () {
+            move(0,8);
+        } 
+        //滑鼠移出
+        oInfo.onmouseout = function () {
+             move(-80,-8);
+        }    
+               
+        function move (position,leftPx){
+            clearInterval(timer); // 重置
+            timer = setInterval(function(){
+                if(oInfo.offsetLeft === position){
+                    clearInterval(timer);
+                }else{
+                    oInfo.style.left = oInfo.offsetLeft+leftPx+'px';
+                }
+            },30); 
+        }
+
+        
+
+      
+
+    }        
+</script>
+
+
+
+</body>
+</html>
